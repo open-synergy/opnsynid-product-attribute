@@ -2,11 +2,11 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=============
-Product Halal
-=============
+======================================
+Product's Halal Certificate Management
+======================================
 
-This module was written to add product halal.
+This module adds capability to manage product's halal certificates.
 
 Installation
 ============
@@ -17,7 +17,7 @@ To install this module, you need to:
 2.  Add the path to this repository in your configuration (addons-path)
 3.  Update the module list
 4.  Go to menu *Setting -> Modules -> Local Modules*
-5.  Search For *Product Halal*
+5.  Search For *Product's Halal Certificate Management*
 6.  Install the module
 
 Bug Tracker
