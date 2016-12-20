@@ -2,11 +2,11 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-===================
-Product Certificate
-===================
+=================================
+Product's Certificates Management
+=================================
 
-Base Product Certficate Module.
+Base module to manage product's certificates.
 
 Installation
 ============

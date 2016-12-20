@@ -20,6 +20,13 @@ class ProductCertificate(models.AbstractModel):
         string="Issuer",
         comodel_name="res.partner",
         )
+
+    product_tmpl_id = fields.Many2one(
+        string="Product Template",
+        comodel_name="product.template",
+        ondelete="cascade",
+        required=True
+    )
     date_start = fields.Date(
         string="Start Date",
         required=True
