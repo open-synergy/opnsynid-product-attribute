@@ -23,34 +23,18 @@ class TestProductHalal(common.TransactionCase):
         # date_start = True
         # date_end = False
 
-        # UPDATE PRODUCT
-        criteria = [
-            ("id", "=", self.product_1.id)
+        self.product_1.halal_ids = [
+            (0, 0, {
+                'name': 'Certificate No.1',
+                'date_start': '2016-01-01'})
         ]
-        product = self.obj_product_template.search(
-            criteria)[0]
-
-        vals = {
-            'halal_ids': [
-                (0, 0, {
-                    'name': 'Certificate No.1',
-                    'date_start': '2016-01-01'})
-            ]
-        }
-        product.write(vals)
-        self.assertEqual(product.halal_state, "certified")
+        self.assertEqual(
+            self.product_1.halal_state, "certified")
 
     def test_product_halal_status_2(self):
         # CONDITION
         # date_start = True
         # date_end < date.now
-
-        # UPDATE PRODUCT
-        criteria = [
-            ("id", "=", self.product_2.id)
-        ]
-        product = self.obj_product_template.search(
-            criteria)[0]
 
         date_now = datetime.now().strftime("%Y-%m-%d")
 
@@ -58,28 +42,19 @@ class TestProductHalal(common.TransactionCase):
             datetime.strptime(
                 date_now, '%Y-%m-%d').toordinal() - 10)
 
-        vals = {
-            'halal_ids': [
-                (0, 0, {
-                    'name': 'Certificate No.2',
-                    'date_start': '2016-01-01',
-                    'date_end': date_end})
-            ]
-        }
-        product.write(vals)
-        self.assertEqual(product.halal_state, "not_certified")
+        self.product_2.halal_ids = [
+            (0, 0, {
+                'name': 'Certificate No.1',
+                'date_start': '2016-01-01',
+                'date_end': date_end})
+        ]
+        self.assertEqual(
+            self.product_2.halal_state, "not_certified")
 
     def test_product_halal_status_3(self):
         # CONDITION
         # date_start = True
         # date_end > date.now
-
-        # UPDATE PRODUCT
-        criteria = [
-            ("id", "=", self.product_3.id)
-        ]
-        product = self.obj_product_template.search(
-            criteria)[0]
 
         date_now = datetime.now().strftime("%Y-%m-%d")
 
@@ -87,13 +62,11 @@ class TestProductHalal(common.TransactionCase):
             datetime.strptime(
                 date_now, '%Y-%m-%d').toordinal() + 10)
 
-        vals = {
-            'halal_ids': [
-                (0, 0, {
-                    'name': 'Certificate No.3',
-                    'date_start': '2016-11-01',
-                    'date_end': date_end})
-            ]
-        }
-        product.write(vals)
-        self.assertEqual(product.halal_state, "certified")
+        self.product_3.halal_ids = [
+            (0, 0, {
+                'name': 'Certificate No.1',
+                'date_start': '2016-01-01',
+                'date_end': date_end})
+        ]
+        self.assertEqual(
+            self.product_3.halal_state, "certified")
