@@ -24,6 +24,8 @@ class ProductTemplate(models.Model):
     def _compute_halal_state(self):
         date_now = datetime.now().strftime("%Y-%m-%d")
         for product in self:
+            if isinstance(product.id, models.NewId):
+                continue
             product.halal_id = False
             if product.halal_ids:
                 halal = product.halal_ids[0]
