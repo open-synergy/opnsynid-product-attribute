@@ -10,7 +10,7 @@
             <field name="inherit_id" ref="product_certificate.product_template_view_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook/page[@name='page_product_certificate']" position="inside">
-                    <group name="grp_product_halal" string="Product Halal">
+                    <group name="grp_product_halal" string="Halal Sertificate">
                         <field name="halal_state"/>
                         <field name="halal_id"/>
                         <field name="halal_ids" nolabel="1" colspan="4">
