@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_sni,Product SNI,model_product_sni,,1,1,1,1
+access_product_kode_teknis_sni,Product Kode Panitia Teknis SNI,model_product_kode_teknis_sni,,1,1,1,1
+access_product_ics_sni,Product ICS SNI,model_product_ics_sni,,1,1,1,1
+access_product_standar_sni,Product Standar SNI,model_product_standar_sni,,1,1,1,1
