@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="product_ics_sni_view_form" model="ir.ui.view">
+            <field name="name">ICS SNI Form</field>
+            <field name="model">product.ics_sni</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="active" />
+                            <field name="description" />
+                        </group>
+                    </sheet>
+                </form>
+           </field>
+        </record>
+
+        <record id="product_ics_sni_view_tree" model="ir.ui.view">
+            <field name="name">ICS SNI Tree</field>
+            <field name="model">product.ics_sni</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+           </field>
+        </record>
+
+        <record id="product_ics_sni_action" model="ir.actions.act_window">
+            <field name="name">ICS Action</field>
+            <field name="res_model">product.ics_sni</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</openerp>

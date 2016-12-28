@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="product_standar_sni_view_form" model="ir.ui.view">
+            <field name="name">Standar SNI Form</field>
+            <field name="model">product.standar_sni</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="active" />
+                            <field name="ics_sni_id" />
+                            <field name="kode_teknis_sni_id" />
+                            <field name="description" />
+                        </group>
+                    </sheet>
+                </form>
+           </field>
+        </record>
+
+        <record id="product_standar_sni_view_tree" model="ir.ui.view">
+            <field name="name">Standar SNI Tree</field>
+            <field name="model">product.standar_sni</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="ics_sni_id" />
+                    <field name="kode_teknis_sni_id" />
+                </tree>
+           </field>
+        </record>
+
+        <record id="product_standar_sni_action" model="ir.actions.act_window">
+            <field name="name">Standar SNI Action</field>
+            <field name="res_model">product.standar_sni</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</openerp>
