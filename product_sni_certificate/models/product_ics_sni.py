@@ -10,7 +10,8 @@ class ProductICSSNI(models.Model):
     _description = "Product ICS SNI"
 
     name = fields.Char(
-        string="ICS"
+        string="ICS",
+        required=True
     )
     description = fields.Text(
         string="Description"
