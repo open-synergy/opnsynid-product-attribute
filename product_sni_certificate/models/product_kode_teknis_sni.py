@@ -10,7 +10,8 @@ class ProductKodeTeknisSNI(models.Model):
     _description = "Product Kode Panitia Teknis SNI"
 
     name = fields.Char(
-        string="Kode Panitia Teknis"
+        string="Kode Panitia Teknis",
+        required=True
     )
     description = fields.Text(
         string="Description"

@@ -14,11 +14,13 @@ class ProductStandarSNI(models.Model):
     )
     ics_sni_id = fields.Many2one(
         string="ICS",
-        comodel_name="product.ics_sni"
+        comodel_name="product.ics_sni",
+        required=True
     )
     kode_teknis_sni_id = fields.Many2one(
         string="Kode Panitia Teknis",
-        comodel_name="product.kode_teknis_sni"
+        comodel_name="product.kode_teknis_sni",
+        required=True
     )
     description = fields.Text(
         string="Description"
