@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- ROOT MENU -->
+        <menuitem 
+            name="Product"
+            id="product_product_root_menu"
+            sequence="1"/>
+
+        <!-- Product Template Menu -->
+
+        <menuitem 
+            name="Product Template"
+            id="product_template_root_menu"
+            parent="product_product_root_menu"
+            sequence="1"/>
+
+            <!-- All Product Templates Menu -->
+
+            <menuitem 
+                name="All Product Templates"
+                id="product_template_all_menu"
+                parent="product_template_root_menu"
+                action="product.product_template_action"
+                sequence="1"/>
+
+        <!-- Product Menu -->
+
+        <menuitem 
+            name="Product"
+            id="product_product_menu"
+            parent="product_product_root_menu"
+            sequence="2"/>
+
+            <!-- All Product Action -->
+
+            <record id="product_product_all_action" model="ir.actions.act_window">
+                <field name="name">All Product</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">product.product</field>
+                <field name="view_mode">kanban,tree,form</field>
+                <field name="view_type">form</field>
+                <field name="context">{}</field>
+                <field name="view_id" ref="product.product_product_tree_view"/>
+                <field name="search_view_id" ref="product.product_search_form_view"/>
+                <field name="help" type="html">
+                  <p class="oe_view_nocontent_create">
+                    Click to define a new product.
+                  </p><p>
+                    You must define a product for everything you sell, whether it's
+                    a physical product, a consumable or a service you offer to
+                    customers.
+                  </p><p>
+                    The product form contains information to simplify the sale
+                    process: price, notes in the quotation, accounting data,
+                    procurement methods, etc.
+                  </p>
+                </field>
+            </record>
+
+            <!-- All Product Menu -->
+
+            <menuitem 
+                name="All Products"
+                id="product_product_all_menu"
+                parent="product_product_menu"
+                action="product_product_all_action"
+                sequence="1"/>
+
+        <!-- Configration Menu -->
+
+        <menuitem 
+            name="Configuration"
+            id="product_product_configuration_menu"
+            parent="product_product_root_menu"
+            sequence="3"/>
+
+            <!-- Unit of Measure Menu -->
+            <menuitem 
+                name="Unit of Measure"
+                id="product_uom_root_menu"
+                parent="product_product_configuration_menu"
+                sequence="1"/>
+
+                <!-- Unit of Measure Categories Menu -->
+                <menuitem 
+                    name="Unit of Measure Categories"
+                    id="product_uom_category_menu"
+                    parent="product_uom_root_menu"
+                    action="product.product_uom_categ_form_action"
+                    sequence="1"/>
+
+                <!-- Unit of Measure Menu -->
+                <menuitem 
+                    name="Unit of Measure"
+                    id="product_uom_menu"
+                    parent="product_uom_root_menu"
+                    action="product.product_uom_form_action"
+                    sequence="2"/>
+
+            <!-- Product Categories & Attributes Menu -->
+            <menuitem 
+                name="Product Categories &amp; Attributes"
+                id="product_categ_attr_root_menu"
+                parent="product_product_configuration_menu"
+                sequence="2"/>
+
+                <!-- Product Categories Menu -->
+                <menuitem 
+                    name="Product Categories"
+                    id="product_category_menu"
+                    parent="product_categ_attr_root_menu"
+                    action="product.product_category_action_form"
+                    sequence="1"/>
+
+                <!-- Attributes Menu -->
+                <menuitem 
+                    name="Attributes"
+                    id="product_attribute_menu"
+                    parent="product_categ_attr_root_menu"
+                    action="product.attribute_action"
+                    sequence="2"/>
+
+                <!-- Attributes Values Menu -->
+                <menuitem 
+                    name="Attributes Values"
+                    id="product_attribute_value_menu"
+                    parent="product_categ_attr_root_menu"
+                    action="product.variants_action"
+                    sequence="3"/>
+
+                <!-- Logistic Units Menu -->
+                <menuitem 
+                    name="Logistic Units"
+                    id="product_ul_menu"
+                    parent="product_categ_attr_root_menu"
+                    action="product.product_ul_form_action"
+                    sequence="4"/>
+
+            <!-- Pricelist Menu -->
+            <menuitem 
+                name="Pricelist"
+                id="product_pricelist_root_menu"
+                parent="product_product_configuration_menu"
+                sequence="3"/>
+
+                <!-- Pricelists Menu -->
+                <menuitem 
+                    name="Pricelists"
+                    id="product_pricelist_menu"
+                    parent="product_pricelist_root_menu"
+                    action="product.product_pricelist_action2"
+                    sequence="1"/>
+
+                <!-- Pricelist Versions Menu -->
+                <menuitem 
+                    name="Pricelist Versions"
+                    id="product_pricelist_version_menu"
+                    parent="product_pricelist_root_menu"
+                    action="product.product_pricelist_action"
+                    sequence="2"/>
+
+                <!-- Pricelist Types Menu -->
+                <menuitem 
+                    name="Pricelist Types"
+                    id="product_pricelist_type_menu"
+                    parent="product_pricelist_root_menu"
+                    action="product.product_price_type_action"
+                    sequence="3"/>
+
+    </data>
+</openerp>
