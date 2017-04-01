@@ -4,7 +4,7 @@
 {
     "name": "Product's Management Application",
     "version": "8.0.1.0.0",
-    "summary": "Base module to manage product",
+    "summary": "App to centralized roduct management",
     "category": "Product Management",
     "website": "https://opensynergy-indonesia.com",
     "author": "OpenSynergy Indonesia",
@@ -17,5 +17,7 @@
     "data": [
         "security/res_groups.xml",
         "views/product_product_view.xml",
+        "views/product_pricelist_type_views.xml",
+        "views/product_pricelist_views.xml",
     ],
 }
