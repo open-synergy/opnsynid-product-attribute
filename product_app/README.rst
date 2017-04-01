@@ -15,6 +15,9 @@ This module will adds menus below:
     * All Product Templates
 * Product
     * All Products
+    * Products by Category
+* Pricelists
+    * All Pricelists
 * Configuration
     * Unit of Measure
         * Unit of Measure Categories
@@ -25,9 +28,9 @@ This module will adds menus below:
         * Attributes Values
         * Logistic Units
     * Pricelist
-        * Pricelists
         * Pricelists Versions
-        * Pricelists Types
+        * Price Types
+        * Pricelist Types
 
 Installation
 ============
