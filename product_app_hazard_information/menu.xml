@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <menuitem 
+        id="product_ghs_hazard_information_menu"
+        name="GHS Hazard Information"
+        parent="product_app.product_product_configuration_menu"
+        sequence="100"/>
+
+    <menuitem 
+        id="product_ghs_hazard_pictogram_menu"
+        name="Hazard Pictogram"
+        parent="product_ghs_hazard_information_menu"
+        action="product_hazard_information.product_ghs_hazard_pictogram_action"
+        sequence="1"/>
+
+    <menuitem 
+        id="product_ghs_hazard_precautionary_statement_menu"
+        name="Hazard Precautionary Statement"
+        parent="product_ghs_hazard_information_menu"
+        action="product_hazard_information.product_ghs_hazard_precautionary_statement_action"
+        sequence="1"/>
+
+    <menuitem 
+        id="product_ghs_hazard_statement_menu"
+        name="Hazard Statement"
+        parent="product_ghs_hazard_information_menu"
+        action="product_hazard_information.product_ghs_hazard_statement_action"
+        sequence="1"/>
+
+    <record id="product_app.product_ghs_hazard_information_menu" model="ir.ui.menu">
+        <field name="name">GHS Hazard</field>
+        <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+    </record>
+    </data>
+</openerp>
