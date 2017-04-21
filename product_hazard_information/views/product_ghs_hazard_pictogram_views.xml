@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+        <record id="product_ghs_hazard_pictogram_view_tree" model="ir.ui.view">
+            <field name="name">GHS Hazard Pictogram Tree</field>
+            <field name="model">product.ghs_hazard_pictogram</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="image" widget="image" height="128px" width="128px"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_ghs_hazard_pictogram_view_form" model="ir.ui.view">
+            <field name="name">GHS Hazard Pictogram Form</field>
+            <field name="model">product.ghs_hazard_pictogram</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group name="group_main" colspan="4" col="2">
+                        <field name="name"/>
+                        <field name="image" widget="image"/>
+                        <field name="code"/>
+                        <field name="active"/>
+                        <field name="description"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_ghs_hazard_pictogram_action" model="ir.actions.act_window">
+            <field name="name">GHS Hazard Pictogram</field>
+            <field name="res_model">product.ghs_hazard_pictogram</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="product_ghs_hazard_pictogram_menu"
+            name="GHS Hazard Pictogram"
+            parent="product_ghs_hazard_information_menu"
+            action="product_ghs_hazard_pictogram_action"
+            sequence="1"/>
+   
+    </data>
+</openerp>
+

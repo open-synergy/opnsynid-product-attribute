@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ghs_hazard_statement,GHS Hazard Statement - All User,model_product_ghs_hazard_statement,,1,1,1,1
+access_ghs_hazard_precautionary_information,GHS Precautionary Hazard Statement - All User,model_product_ghs_hazard_precautionary_statement,,1,1,1,1
+access_ghs_hazard_pictogram,GHS Hazard Pictogram - All User,model_product_ghs_hazard_pictogram,,1,1,1,1
+access_product_hazard_statement,Product Hazard Statement - All User,model_product_hazard_statement,,1,1,1,1
+access_product_hazard_precautionary_information,GHS Precautionary Hazard Statement - All User,model_product_hazard_precautionary_statement,,1,1,1,1
+access_product_hazard_pictogram,GHS Hazard Pictogram - All User,model_product_hazard_pictogram,,1,1,1,1

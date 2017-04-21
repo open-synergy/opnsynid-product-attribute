@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+        <record id="product_template_view_form" model="ir.ui.view">
+            <field name="name">Product Hazard Form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Hazard Information">
+                        <group name="grp_hazard_statement" string="Hazard Statement" colspan="4" col="4">
+                            <field name="hazard_statement_ids" colspan="4" nolabel="1">
+                                <tree editable="top">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="hazard_statement_id"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group name="grp_hazard_precautionary_statement" string="Hazard Precautionary Statement" colspan="4" col="4">
+                            <field name="hazard_precautionary_statement_ids" colspan="4" nolabel="1">
+                                <tree editable="top">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="hazard_precautionary_statement_id"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group name="grp_hazard_pictogram" string="Hazard Pictogram" colspan="4" col="4">
+                            <field name="hazard_pictogram_ids" colspan="4" nolabel="1">
+                                <tree editable="top">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="hazard_pictogram_id"/>
+                                    <field name="image" widget="image" width="72px" height="72px"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+   
+    </data>
+</openerp>
+
