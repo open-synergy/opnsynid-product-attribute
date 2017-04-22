@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ec_number,EC Number - All User,model_product_ec_number,,1,1,1,1
+access_ec_number_category,EC Number Category - All User,model_product_ec_number_category,,1,1,1,1

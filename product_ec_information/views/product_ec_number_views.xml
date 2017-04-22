@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+        <record id="product_ec_number_view_tree" model="ir.ui.view">
+            <field name="name">EC Number Tree</field>
+            <field name="model">product.ec_number</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="category_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_ec_number_view_form" model="ir.ui.view">
+            <field name="name">EC Number Form</field>
+            <field name="model">product.ec_number</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group name="group_main" colspan="4" col="2">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="category_id"/>                        
+                        <field name="active"/>
+                        <field name="description"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_ec_number_action" model="ir.actions.act_window">
+            <field name="name">EC Number</field>
+            <field name="res_model">product.ec_number</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem 
+            id="product_ec_number_menu"
+            name="EC Number"
+            parent="product_ec_number_information_menu"
+            action="product_ec_number_action"
+            sequence="1"/>
+   
+    </data>
+</openerp>
+
