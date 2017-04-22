@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <menuitem 
+        id="product_ec_number_information_menu"
+        name="EC Information"
+        parent="product_app.product_product_configuration_menu"
+        sequence="100"/>
+
+        <menuitem 
+            id="product_ec_number_category_menu"
+            name="EC Number Category"
+            parent="product_ec_number_information_menu"
+            action="product_ec_information.product_ec_number_category_action"
+            sequence="1"/>
+
+        <menuitem 
+            id="product_ec_number_menu"
+            name="EC Number"
+            parent="product_ec_number_information_menu"
+            action="product_ec_information.product_ec_number_action"
+            sequence="1"/>            
+
+    <record id="product_ec_information.product_ec_number_information_menu" model="ir.ui.menu">
+        <field name="name">EC Registry</field>
+        <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+    </record>
+    </data>
+</openerp>
