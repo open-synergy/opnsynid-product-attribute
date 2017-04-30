@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+<data>
+<record id="stock.menu_product_by_category_stock_form" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_stock_products_menu" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_package" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_stock_uom_categ_form_action" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_stock_uom_form_action" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_product_category_config_stock" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_product_template_config_stock" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_product_variant_config_stock" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_product_packaging_stock_action" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="stock.menu_stock_unit_measure_stock" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+</data>
+</openerp>
