@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+<data>
+<record id="product_brand.menu_product_brand" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<menuitem
+    name="Product Brands"
+    id="menu_product_brand"
+    action="product_brand.action_product_brand"
+    parent="product_app.product_categ_attr_root_menu"/>
+</data>
+</openerp>
