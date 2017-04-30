@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+<data>
+<record id="purchase.menu_procurement_partner_contact_form" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="purchase.menu_products" model="ir.ui.menu">
+    <field name="name">Products</field>
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="purchase.menu_product_by_category_purchase_form" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="purchase.menu_product_category_config_purchase" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="purchase.menu_purchase_uom_categ_form_action" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="purchase.menu_purchase_uom_form_action" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<record id="purchase.menu_purchase_unit_measure_purchase" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+</data>
+</openerp>
