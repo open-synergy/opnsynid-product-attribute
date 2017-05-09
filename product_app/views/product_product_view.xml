@@ -25,7 +25,7 @@
     <field name="view_mode">kanban,tree,form</field>
     <field name="view_type">form</field>
     <field name="view_id" ref="product.product_template_kanban_view"/>
-    <field name="context">{}</field>
+    <field name="context">{'default_sale_ok':0, 'default_purchase_ok':0}</field>
 </record>
 
 <menuitem 
@@ -51,7 +51,7 @@
     <field name="res_model">product.product</field>
     <field name="view_mode">kanban,tree,form</field>
     <field name="view_type">form</field>
-    <field name="context">{}</field>
+    <field name="context">{'default_sale_ok':0, 'default_purchase_ok':0}</field>
     <field name="view_id" ref="product.product_product_tree_view"/>
     <field name="search_view_id" ref="product.product_search_form_view"/>
     <field name="help" type="html">
