@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+<record id="product_pricelist_version_view_form" model="ir.ui.view">
+    <field name="name">Product Pricelist Version</field>
+    <field name="model">product.pricelist.version</field>
+    <field name="inherit_id" ref="product.product_pricelist_version_form_view"/>
+    <field name="arch" type="xml">
+        <xpath expr="//form" position="inside">
+            <div class="open_chatter">
+                <field name="message_follower_ids" widget="mail_followers" group="base.group_user"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+        </xpath>
+    </field>
+</record>
+</data>
+</openerp>
+
