@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+<record id="product_pricelist_version_view_form" model="ir.ui.view">
+    <field name="name">Product Pricelist Version</field>
+    <field name="model">product.pricelist.version</field>
+    <field name="inherit_id" ref="product.product_pricelist_version_form_view"/>
+    <field name="arch" type="xml">
+        <xpath expr="//form/group[1]" position="before">
+            <div class="oe_right oe_button_box" name="buttons">
+                <button class="oe_stat_button"
+                    name="%(pricelist_item_action)d"
+                    icon="fa-building-o"
+                    type="action">
+                    <div>
+                        Items
+                    </div>
+                </button>
+            </div>
+        </xpath>
+    </field>
+</record>
+
+<record id="pricelist_version_action" model="ir.actions.act_window">
+    <field name="name">Pricelist Versions</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">product.pricelist.version</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+    <field name="domain">[('pricelist_id','=',active_id)]</field>
+    <field name="context">{'default_pricelist_id':active_id}</field>
+</record>
+</data>
+</openerp>
+
