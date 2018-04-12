@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+<record id="add_product_to_pricelist_item_view_form" model="ir.ui.view">
+    <field name="name">product.add_product_to_pricelist_item form</field>
+    <field name="model">product.add_product_to_pricelist_item</field>
+    <field name="inherit_id" ref="add_to_pricelist_item_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='group_1']" position="before">
+            <group name="group_product" string="Products" colspan="4">
+                <field name="product_ids" colspan="4" nolabel="1"/>
+            </group>
+        </xpath>
+    </field>
+</record>
+
+<record id="add_product_to_pricelist_item_action" model="ir.actions.act_window">
+    <field name="name">Add Product to Pricelist Item</field>
+    <field name="res_model">product.add_product_to_pricelist_item</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="add_product_to_pricelist_item_view_form"/>
+    <field name="target">new</field>
+</record>
+</data>
+</openerp>
