@@ -21,6 +21,10 @@
                 </button>
             </div>
         </xpath>
+
+        <xpath expr="//field[@name='type']" position="attributes">
+            <attribute name="invisible">context.get('type_invisible', False)</attribute>
+        </xpath>
     </field>
 </record>
 
