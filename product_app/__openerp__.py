@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Product's Management Application",
-    "version": "8.0.1.2.0",
+    "version": "8.0.1.3.0",
     "summary": "App to centralized roduct management",
     "category": "Product Management",
     "website": "https://opensynergy-indonesia.com",

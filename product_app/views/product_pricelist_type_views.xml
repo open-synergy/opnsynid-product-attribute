@@ -20,9 +20,15 @@
     <field name="model">product.pricelist.type</field>
     <field name="arch" type="xml">
         <form>
+            <header>
+                <button name="action_create_menu" string="Create Menu" type="object" attrs="{'invisible':[('menu_id','!=',False)]}" groups="base.group_system"/>
+                <button name="action_remove_menu" string="Remove Menu" type="object" attrs="{'invisible':[('menu_id','=',False)]}" groups="base.group_system"/>
+            </header>
             <group name="group_1">
                 <field name="name"/>
                 <field name="key"/>
+                <field name="waction_id" groups="base.group_system"/>
+                <field name="menu_id" groups="base.group_system"/>
             </group>
         </form>
     </field>
