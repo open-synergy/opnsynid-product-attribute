@@ -4,6 +4,26 @@
 
 <openerp>
 <data>
+<record id="product_pricelist_view_form" model="ir.ui.view">
+    <field name="name">Product Pricelist</field>
+    <field name="model">product.pricelist</field>
+    <field name="inherit_id" ref="product.product_pricelist_view"/>
+    <field name="arch" type="xml">
+        <xpath expr="//label[@for='name']" position="before">
+            <div class="oe_right oe_button_box" name="buttons">
+                <button class="oe_stat_button"
+                    name="%(pricelist_version_action)d"
+                    icon="fa-building-o"
+                    type="action">
+                    <div>
+                        Version
+                    </div>
+                </button>
+            </div>
+        </xpath>
+    </field>
+</record>
+
 <record id="product_pricelist_all_action" model="ir.actions.act_window">
     <field name="name">Product Pricelists</field>
     <field name="type">ir.actions.act_window</field>
