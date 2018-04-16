@@ -22,7 +22,30 @@ class AddProductTemplateToPricelistItem(models.TransientModel):
     def _create_pricelist_items(self):
         self.ensure_one()
         obj_item = self.env["product.pricelist.item"]
-        for product in self.product_tmpl_ids:
+        product_templates = self.product_tmpl_ids
+        criteria = [
+            ("price_version_id", "=", self.price_version_id.id),
+            ("product_id", "=", False),
+            ("categ_id", "=", False),
+        ]
+        existing_templates = obj_item.search(
+            criteria).mapped("product_tmpl_id")
+        add_templates = product_templates - existing_templates
+        update_templates = product_templates & existing_templates
+
+        for template in add_templates:
             data = self._prepare_pricelist_item_data()
-            data.update({"product_tmpl_id": product.id})
+            data.update({"product_tmpl_id": template.id})
             obj_item.create(data)
+
+        if self.existing_data == "update":
+            criteria2 = [
+                ("price_version_id", "=", self.price_version_id.id),
+                ("product_id", "=", False),
+                ("categ_id", "=", False),
+                ("product_tmpl_id", "in", update_templates.ids),
+            ]
+            update_items = obj_item.search(criteria2)
+            for item in update_items:
+                data = self._prepare_pricelist_item_data()
+                item.write(data)

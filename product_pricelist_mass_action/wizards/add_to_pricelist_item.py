@@ -22,6 +22,20 @@ class AddToPricelistItem(models.AbstractModel):
         result.append((-2, _("Supplier Prices on the product form")))
         return result
 
+    @api.model
+    def _default_existing_data(self):
+        return "no_update"
+
+    @api.model
+    def _default_price_version_id(self):
+        return self._context.get("active_id", False)
+
+    price_version_id = fields.Many2one(
+        string="Price Version",
+        comodel_name="product.pricelist.version",
+        required=True,
+        default=lambda self: self._default_price_version_id(),
+    )
     min_quantity = fields.Integer(
         string="Min. Quantity",
         required=True,
@@ -73,6 +87,15 @@ class AddToPricelistItem(models.AbstractModel):
         string="Max. Price Margin",
         digits_compute=dp.get_precision("Product Price"),
         help="Specify the maximum amount of margin over the base price.",
+    )
+    existing_data = fields.Selection(
+        string="Existing Data Treatment",
+        selection=[
+            ("update", "Update"),
+            ("no_update", "No-Update"),
+        ],
+        default=lambda self: self._default_existing_data(),
+        required=True,
     )
 
     @api.multi

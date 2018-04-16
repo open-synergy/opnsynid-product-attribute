@@ -6,6 +6,10 @@
     <field name="model">product.add_to_pricelist_item</field>
     <field name="arch" type="xml">
         <form string="Products Listprices Items">
+            <group name="group_4" colspan="4" col="2">
+                <field name="existing_data"/>
+                <field name="price_version_id"/>
+            </group>
             <group name="group_1" col="4">
                 <field name="min_quantity"/>
                 <field name="sequence"/>
