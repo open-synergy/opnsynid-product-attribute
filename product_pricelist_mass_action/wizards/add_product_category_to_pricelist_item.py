@@ -27,6 +27,7 @@ class AddProductCategoryToPricelistItem(models.TransientModel):
             ("price_version_id", "=", self.price_version_id.id),
             ("product_tmpl_id", "=", False),
             ("product_id", "=", False),
+            ("sequence", "=", self.sequence),
         ]
         existing_categs = obj_item.search(
             criteria).mapped("categ_id")
@@ -44,6 +45,7 @@ class AddProductCategoryToPricelistItem(models.TransientModel):
                 ("product_tmpl_id", "=", False),
                 ("product_id", "=", False),
                 ("categ_id", "in", update_categs.ids),
+                ("sequence", "=", self.sequence),
             ]
             update_items = obj_item.search(criteria2)
             for item in update_items:
