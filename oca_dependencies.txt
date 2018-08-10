@@ -14,5 +14,6 @@
 # To provide both the URL and a branch, use:
 web https://github.com/OCA/web 8.0
 product-attribute https://github.com/OCA/product-attribute 8.0
+sale-workflow https://github.com/OCA/sale-workflow 8.0
 
 
