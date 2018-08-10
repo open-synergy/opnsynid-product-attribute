@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+    <data>
+        <record id="sale_packaging_price.menu_product_packaging_action" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+        </record>
+
+        <record id="sale_packaging_price.menu_product_packaging_wh_action" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+        </record>
+
+        <menuitem
+            name="Product Packaging"
+            id="menu_product_packaging"
+            action="sale_packaging_price.action_product_packaging_form"
+            parent="product_app.product_product_configuration_menu"
+            sequence="99"/>
+
+    </data>
+</openerp>
