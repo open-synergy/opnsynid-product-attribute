@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+    <data>
+        <record id="product_template_view_form" model="ir.ui.view">
+            <field name="name">product.template form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='packaging']" position="after">
+                    <group name="multiple_uom" string="UoM Conversion" colspan="4" col="2">
+                        <field name="uom_conversion_ids" nolabel="1">
+                            <tree editable="top">
+                                <field name="uom_categ_id"/>
+                                <field name="reference_uom_id" domain="[('category_id','=',uom_categ_id),('uom_type','=','reference')]"/>
+                                <field name="coefficient"/>
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
