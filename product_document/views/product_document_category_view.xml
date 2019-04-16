@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+
+<record id="product_document_category_view_form" model="ir.ui.view">
+    <field name="name">product.document.category.form</field>
+    <field name="model">product.document.category</field>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+        <form string="Document Categories">
+            <group>
+                <field name="code" />
+                <field name="name" />
+                <field name="active" />
+            </group>
+            <notebook>
+                <page name="note" string="Note">
+                    <field name="note"/>
+                </page>
+            </notebook>
+        </form>
+    </field>
+</record>
+
+<record id="product_document_category_view_tree" model="ir.ui.view">
+    <field name="name">product.document.category.tree</field>
+    <field name="model">product.document.category</field>
+    <field name="type">tree</field>
+    <field name="arch" type="xml">
+        <tree string="Document Categories">
+            <field name="code"/>
+            <field name="name"/>
+        </tree>
+    </field>
+</record>
+
+<record id="product_document_category_action" model="ir.actions.act_window">
+    <field name="name">Product Document Categories</field>
+    <field name="res_model">product.document.category</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<menuitem
+    id="product_document_root_menu"
+    name="Product Document"
+    parent="base.menu_base_config"
+    sequence="500"/>
+
+<menuitem
+    id="product_document_category_menu"
+    name="Product Document Categories"
+    parent="product_document_root_menu"
+    action="product_document_category_action"
+    sequence="1"/>
+
+</data>
+</openerp>

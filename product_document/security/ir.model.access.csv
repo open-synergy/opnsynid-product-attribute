@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_document_category,Product Document Categories - All User,model_product_document_category,,1,1,1,1
+access_product_document,Product Document - All User,model_product_document,,1,1,1,1
