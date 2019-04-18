@@ -106,7 +106,7 @@ class ProductTemplate(models.Model):
                     category =\
                         self._create_inverse_document_categ(
                             category_code)
-                prod_document = self._create_inverse_document(
+                self._create_inverse_document(
                     record, category, name
                 )
             elif record_len == 1:

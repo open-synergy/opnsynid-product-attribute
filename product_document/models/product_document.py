@@ -52,10 +52,10 @@ class ProductDocument(models.Model):
             ("open", "Running"),
             ("pending", "To Renew"),
             ("close", "Expired"),
-            ],
+        ],
         default="draft",
         required=True,
-        )
+    )
     active = fields.Boolean(
         string="Active",
         default=True
