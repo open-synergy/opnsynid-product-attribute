@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<openerp>
+<data>
+
+<record id="product_document.product_document_root_menu" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+<record id="product_document.product_document_category_menu" model="ir.ui.menu">
+    <field name="groups_id" eval="[(6, 0, [ref('product_app.group_hide_product_menu')])]"/>
+</record>
+
+<menuitem
+    id="product_document_root_app_menu"
+    name="Product Document"
+    parent="product_app.product_product_configuration_menu"
+    sequence="500"/>
+
+<menuitem
+    id="product_document_category_app_menu"
+    name="Product Document Categories"
+    parent="product_document_root_app_menu"
+    action="product_document.product_document_category_action"
+    sequence="1"/>
+
+</data>
+</openerp>
