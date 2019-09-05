@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+<record id="product_category_view_form" model="ir.ui.view">
+    <field name="name">product.category form</field>
+    <field name="model">product.category</field>
+    <field name="inherit_id" ref="account.view_category_property_form"/>
+    <field name="priority" eval="10"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='property_account_expense_categ']" position="after">
+            <field name="prepaid_income_account_id"/>
+            <field name="prepaid_expense_account_id"/>
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>
