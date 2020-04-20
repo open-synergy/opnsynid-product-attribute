@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+  <data>
+
+    <record id="product_uom_categ_view_form" model="ir.ui.view">
+        <field name="name">product.uom.categ form</field>
+        <field name="model">product.uom.categ</field>
+        <field name="inherit_id" ref="product.product_uom_categ_form_view"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="active"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+  </data>
+</openerp>
