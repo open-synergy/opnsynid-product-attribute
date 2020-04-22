@@ -15,6 +15,8 @@
         "base_workflow_policy",
     ],
     "data": [
-        "views/product_uom_categ_view.xml",        
+        "data/base_workflow_policy_data.xml",
+        "views/product_uom_categ_view.xml",
+        "views/res_company_views.xml",
     ],
 }
