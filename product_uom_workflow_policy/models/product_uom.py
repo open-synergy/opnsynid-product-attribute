@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
+# Copyright 2020 PT Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api
@@ -55,6 +56,27 @@ class ProductUom(models.Model):
         store=False,
         default=lambda self: self._get_company_id(),
     )
+    name = fields.Char(
+        readonly=True,
+        states={"draft": [("readonly", False),]},
+    )
+    category_id = fields.Many2one(
+        readonly=True,
+        states={"draft": [("readonly", False),]},
+    )
+    rounding = fields.Float(
+        readonly=True,
+        states={"draft": [("readonly", False),]},
+    )
+    factor = fields.Float(
+        readonly=True,
+        states={"draft": [("readonly", False),]},
+    )
+    uom_type = fields.Selection(
+        readonly=True,
+        states={"draft": [("readonly", False),]},
+    )
+
     # Policy Fields
     confirm_ok = fields.Boolean(
         string="Can Confirm",
