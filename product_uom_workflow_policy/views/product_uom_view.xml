@@ -34,7 +34,6 @@
                         <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" attrs="{'invisible':['|',('state','!=','draft'),('confirm_ok','=',False)]}" confirm="Confirm data. Are you sure?"/>
                         <button name="action_valid" type="object" string="Valid" class="oe_highlight" attrs="{'invisible':['|',('state','!=','confirm'),('valid_ok','=',False)]}" confirm="Validate data. Are you sure?"/>
                         <button name="action_restart" type="object" string="Set to Draft" attrs="{'invisible':['|',('state','=','draft'),('restart_ok','=',False)]}" confirm="Restart data. Are you sure?"/>
-                        <!-- <button name="action_restart" type="object" string="Set to Draft" class="oe_highlight" attrs="{'invisible':['|',('state','=','draft'),('restart_ok','=',False)]}" confirm="Restart data. Are you sure?"/> -->
                         <field name="state" string="State" widget="statusbar" statusbar_visible="draft,confirm,valid"/>
                     </header>
                 </xpath>

@@ -4,7 +4,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api
-# from openerp.exceptions import Warning as UserError
 
 
 class ProductUomCategory(models.Model):

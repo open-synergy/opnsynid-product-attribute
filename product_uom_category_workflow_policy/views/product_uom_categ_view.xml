@@ -71,6 +71,7 @@
                     <field name="name"/>
                     <filter string="Active" domain="[('active','=',True)]"/>
                     <filter string="In Active" domain="[('active','=',False)]"/>
+                    <filter string="All" domain="[('active','in',[True, False])]"/>
                     <group name="grp_state" string="State">
                         <filter name="dom_draft" string="Draft" domain="[('state','=','draft')]"/>
                         <filter name="dom_confirm" string="Waiting for Approval" domain="[('state','=','confirm')]"/>
