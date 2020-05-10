@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+    <!-- HEADER -->
+    <record id="base_workflow_product_template" model="base.workflow_policy">
+        <field name="model_id" ref="product.model_product_template"/>
+    </record>
+
+    <!-- LINE -->
+    <record id="base_workflow_line_product_template_confirm" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="base_workflow_product_template"/>
+        <field name="field_id" search="[('model_id.model','=','product.template'),('name','=','confirm_ok')]"/>
+        <field name="python_code">result = document.company_id.product_template_confirm_grp_ids.ids</field>
+    </record>
+    <record id="base_workflow_line_product_template_valid" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="base_workflow_product_template"/>
+        <field name="field_id" search="[('model_id.model','=','product.template'),('name','=','valid_ok')]"/>
+        <field name="python_code">result = document.company_id.product_template_valid_grp_ids.ids</field>
+    </record>
+    <record id="base_workflow_line_product_template_restart" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="base_workflow_product_template"/>
+        <field name="field_id" search="[('model_id.model','=','product.template'),('name','=','restart_ok')]"/>
+        <field name="python_code">result = document.company_id.product_template_restart_grp_ids.ids</field>
+    </record>
+</data>
+</openerp>
