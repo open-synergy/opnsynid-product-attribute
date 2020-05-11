@@ -140,7 +140,31 @@ class ProductTemplate(models.Model):
             ],
         },
     )
+    volume = fields.Float(
+        readonly=True,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
+    )
+    weight = fields.Float(
+        readonly=True,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
+    )
     warranty = fields.Float(
+        readonly=True,
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
+    )
+    weight_net = fields.Float(
         readonly=True,
         states={
             "draft": [
