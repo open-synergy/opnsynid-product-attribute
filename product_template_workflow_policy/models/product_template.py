@@ -17,18 +17,15 @@ class ProductTemplate(models.Model):
     @api.depends(
         "company_id",
     )
-
     # membuat fungsi untuk field compute -->
     @api.multi
     def _compute_policy(self):
         _super = super(ProductTemplate, self)
         _super._compute_policy()
-
     @api.multi
     def _compute_company_id(self):
         for document in self:
             document.company_id = self.env.user.company_id
-
     @api.multi
     def _get_company_id(self):
         return self.env.user.company_id
@@ -52,67 +49,122 @@ class ProductTemplate(models.Model):
     )
     name = fields.Char(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     sale_ok = fields.Boolean(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     type = fields.Selection(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     list_price = fields.Float(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     description = fields.Text(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     active = fields.Boolean(
         readonly=True,
     )
     ean13 = fields.Char(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     default_code = fields.Char(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     standard_price = fields.Float(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     seller_ids = fields.One2many(
         comodel_name="product.supplierinfo",
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     description_purchase = fields.Text(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     product_manager = fields.Many2one(
         comodel_name="res.users",
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     warranty = fields.Float(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     description_sale = fields.Text(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     attribute_line_ids = fields.One2many(
         comodel_name="product.attribute.line",
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
-
     # Policy Fields
     confirm_ok = fields.Boolean(
         string="Can Confirm",
@@ -161,18 +213,15 @@ class ProductTemplate(models.Model):
     def action_confirm(self):
         for document in self:
             document.write(document._prepare_confirm_data())
-
     @api.multi
     def action_valid(self):
         for document in self:
             document.write(document._prepare_valid_data())
-
     @api.multi
     def action_restart(self):
         for document in self:
             document.write(document._prepare_restart_data())
 
-    # fungsi perubahan data state user dan tanggal -- confirm
     @api.multi
     def _prepare_confirm_data(self):
         self.ensure_one()
@@ -184,8 +233,6 @@ class ProductTemplate(models.Model):
             "restart_user_id": False,
         }
         return result
-
-    # fungsi perubahan data state user dan tanggal -- valid
     @api.multi
     def _prepare_valid_data(self):
         self.ensure_one()
@@ -196,8 +243,6 @@ class ProductTemplate(models.Model):
             "active": True,
         }
         return result
-
-    # fungsi perubahan data state user dan tanggal -- restart
     @api.multi
     def _prepare_restart_data(self):
         self.ensure_one()
