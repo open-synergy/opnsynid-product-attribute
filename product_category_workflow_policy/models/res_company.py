@@ -13,21 +13,21 @@ class ResCompany(models.Model):
     product_category_confirm_grp_ids = fields.Many2many(
         string="Allow To Confirm Category",
         comodel_name="res.groups",
-        relation="rel_company_id_confirm",
+        relation="rel_company_2_product_categ_confirm",
         column1="company_id",
         column2="group_id",
     )
     product_category_valid_grp_ids = fields.Many2many(
         string="Allow To Validate Category",
         comodel_name="res.groups",
-        relation="rel_company_id_valid",
+        relation="rel_company_2_product_categ_valid",
         column1="company_id",
         column2="group_id",
     )
     product_category_restart_grp_ids = fields.Many2many(
         string="Allow To Restart Category",
         comodel_name="res.groups",
-        relation="rel_company_id_restart",
+        relation="rel_company_2_product_categ_restart",
         column1="company_id",
         column2="group_id",
     )

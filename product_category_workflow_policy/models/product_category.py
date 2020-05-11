@@ -6,6 +6,7 @@
 from openerp import models, fields, api, _
 from openerp.exceptions import Warning as UserError
 
+
 class ProductCategory(models.Model):
     # jika 1 inherit tdk perlu buat _name
     _name = "product.category"
@@ -17,7 +18,6 @@ class ProductCategory(models.Model):
     @api.depends(
         "company_id",
     )
-
     # membuat fungsi untuk field compute -->
     @api.multi
     def _compute_policy(self):
@@ -57,18 +57,29 @@ class ProductCategory(models.Model):
     )
     name = fields.Char(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     parent_id = fields.Many2one(
         comodel_name="product.category",
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
     type = fields.Selection(
         readonly=True,
-        states={"draft": [("readonly", False),]},
+        states={
+            "draft": [
+                ("readonly", False),
+            ],
+        },
     )
-
     # Policy Fields
     confirm_ok = fields.Boolean(
         string="Can Confirm",
@@ -126,11 +137,7 @@ class ProductCategory(models.Model):
     @api.multi
     def action_restart(self):
         for document in self:
-            # cek jika memiliki child muncul error
-            if document.child_id:
-                raise UserError(_("Category %s cannot be set to draft because has child category") % (self.name))
-            else:
-                document.write(document._prepare_restart_data())
+            document.write(document._prepare_restart_data())
 
     # fungsi perubahan data state user dan tanggal -- confirm
     @api.multi
