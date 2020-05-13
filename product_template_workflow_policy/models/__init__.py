@@ -5,5 +5,6 @@
 
 from . import (
     product_template,
+    product_product,
     res_company,
 )

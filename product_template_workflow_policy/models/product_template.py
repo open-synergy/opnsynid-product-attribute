@@ -30,6 +30,10 @@ class ProductTemplate(models.Model):
     def _get_company_id(self):
         return self.env.user.company_id
 
+    active = fields.Boolean(
+        default=False,
+        readonly=True,
+    )
     state = fields.Selection(
         string="State",
         selection=[
@@ -86,9 +90,6 @@ class ProductTemplate(models.Model):
                 ("readonly", False),
             ],
         },
-    )
-    active = fields.Boolean(
-        readonly=True,
     )
     ean13 = fields.Char(
         readonly=True,
