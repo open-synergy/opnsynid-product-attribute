@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+    <data>
+        <record id="product_category_view_form" model="ir.ui.view">
+            <field name="name">product.category.workflow.policy.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='parent_id']" position="before">
+                    <field name="active"/>
+                    <field name="company_id" invisible="0"/>
+                </xpath>
+
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" attrs="{'invisible':['|',('state','!=','draft'),('confirm_ok','=',False)]}" confirm="Confirm data. Are you sure?"/>
+                        <button name="action_valid" type="object" string="Valid" class="oe_highlight" attrs="{'invisible':['|',('state','!=','confirm'),('valid_ok','=',False)]}" confirm="Validate data. Are you sure?"/>
+                        <button name="action_restart" type="object" string="Set to Draft" attrs="{'invisible':['|',('state','=','draft'),('restart_ok','=',False)]}" confirm="Restart data. Are you sure?"/>
+                        <field name="state" string="State" widget="statusbar" statusbar_visible="draft,confirm,valid"/>
+                    </header>
+                </xpath>
+                <xpath expr="//group" position="after">
+                    <notebook>
+                        <page name="policy" string="Policy" groups="base.group_system">
+                            <group name="policy_1" colspan="4" col="2">
+                                <field name="confirm_ok"/>
+                                <field name="valid_ok"/>
+                                <field name="restart_ok"/>
+                            </group>
+                        </page>
+                        <page name="log" string="Log">
+                            <group name="group_log_1" colspan="4" col="3">
+                                <field name="confirm_date" string="Confirm"/>
+                                <field name="confirm_user_id" nolabel="1"/>
+                                <field name="valid_date" string="Validate"/>
+                                <field name="valid_user_id" nolabel="1"/>
+                                <field name="restart_date" string="Restart"/>
+                                <field name="restart_user_id" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </data>
+            </field>
+        </record>
+        <record id="product_category_list_view_tree" model="ir.ui.view">
+            <field name="name">product.category.workflow.policy.tree</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_list_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='complete_name']" position="after">
+                    <field name="state"/>
+                    <field name="active"/>
+                </xpath>
+            </data>
+            </field>
+        </record>
+        <record id="product_category_view_search" model="ir.ui.view">
+            <field name="name">product.category search</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_search_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <filter string="ALL" domain="[('active','in',[True,False])]"/>
+                    <filter string="Active" domain="[('active','=',True)]"/>
+                    <filter string="In Active" domain="[('active','=',False)]"/>
+                    <separator/>
+                    <filter name="dom_draft" string="Draft" domain="[('state','=','draft')]"/>
+                    <filter name="dom_confirm" string="Waiting for Approval" domain="[('state','=','confirm')]"/>
+                    <filter name="dom_valid" string="Valid" domain="[('state','=','valid')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="State" name="State" context="{'group_by':'state'}"/>
+                        <filter string="Active" name="Active" context="{'group_by':'active'}"/>
+                    </group>
+                </xpath>
+            </data>
+            </field>
+        </record>
+    </data>
+</openerp>
