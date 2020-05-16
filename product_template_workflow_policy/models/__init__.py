@@ -5,6 +5,6 @@
 
 from . import (
     product_template,
-    product_product,
+    # product_product,
     res_company,
 )
