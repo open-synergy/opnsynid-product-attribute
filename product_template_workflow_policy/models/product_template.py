@@ -2,12 +2,10 @@
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
 from openerp import models, fields, api
 
 
 class ProductTemplate(models.Model):
-    # jika 1 inherit tdk perlu buat _name
     _name = "product.template"
     _inherit = [
         "product.template",
@@ -17,15 +15,16 @@ class ProductTemplate(models.Model):
     @api.depends(
         "company_id",
     )
-    # membuat fungsi untuk field compute -->
     @api.multi
     def _compute_policy(self):
         _super = super(ProductTemplate, self)
         _super._compute_policy()
+
     @api.multi
     def _compute_company_id(self):
         for document in self:
             document.company_id = self.env.user.company_id
+
     @api.multi
     def _get_company_id(self):
         return self.env.user.company_id
@@ -181,27 +180,18 @@ class ProductTemplate(models.Model):
             ],
         },
     )
-    attribute_line_ids = fields.One2many(
-        comodel_name="product.attribute.line",
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
     # Policy Fields
     confirm_ok = fields.Boolean(
         string="Can Confirm",
-        compute="_compute_policy"
+        compute="_compute_policy",
     )
     valid_ok = fields.Boolean(
         string="Can Valid",
-        compute="_compute_policy"
+        compute="_compute_policy",
     )
     restart_ok = fields.Boolean(
         string="Can Restart",
-        compute="_compute_policy"
+        compute="_compute_policy",
     )
     # Log Fields
     confirm_date = fields.Datetime(
@@ -238,10 +228,12 @@ class ProductTemplate(models.Model):
     def action_confirm(self):
         for document in self:
             document.write(document._prepare_confirm_data())
+
     @api.multi
     def action_valid(self):
         for document in self:
             document.write(document._prepare_valid_data())
+
     @api.multi
     def action_restart(self):
         for document in self:
@@ -258,6 +250,7 @@ class ProductTemplate(models.Model):
             "restart_user_id": False,
         }
         return result
+
     @api.multi
     def _prepare_valid_data(self):
         self.ensure_one()
@@ -268,6 +261,7 @@ class ProductTemplate(models.Model):
             "active": True,
         }
         return result
+
     @api.multi
     def _prepare_restart_data(self):
         self.ensure_one()
