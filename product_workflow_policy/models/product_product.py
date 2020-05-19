@@ -2,13 +2,16 @@
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 from openerp import models, fields, api
+import logging
+_logger = logging.getLogger(__name__)
 
 
-class ProductTemplate(models.Model):
-    _name = "product.template"
+class ProductProduct(models.Model):
+    _name = "product.product"
     _inherit = [
-        "product.template",
+        "product.product",
         "base.workflow_policy_object",
     ]
 
@@ -17,7 +20,7 @@ class ProductTemplate(models.Model):
     )
     @api.multi
     def _compute_policy(self):
-        _super = super(ProductTemplate, self)
+        _super = super(ProductProduct, self)
         _super._compute_policy()
 
     @api.multi
@@ -33,6 +36,17 @@ class ProductTemplate(models.Model):
         default=False,
         readonly=True,
     )
+    product_active = fields.Boolean(
+        default=False,
+        readonly=True,
+    )
+    company_id = fields.Many2one(
+        string="Company",
+        comodel_name="res.company",
+        compute="_compute_company_id",
+        store=False,
+        default=lambda self: self._get_company_id(),
+    )
     state = fields.Selection(
         string="State",
         selection=[
@@ -43,46 +57,7 @@ class ProductTemplate(models.Model):
         default="draft",
         required=True,
     )
-    company_id = fields.Many2one(
-        string="Company",
-        comodel_name="res.company",
-        compute="_compute_company_id",
-        store=False,
-        default=lambda self: self._get_company_id(),
-    )
-    name = fields.Char(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    sale_ok = fields.Boolean(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    type = fields.Selection(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    list_price = fields.Float(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    description = fields.Text(
+    lst_price = fields.Float(
         readonly=True,
         states={
             "draft": [
@@ -106,92 +81,18 @@ class ProductTemplate(models.Model):
             ],
         },
     )
-    standard_price = fields.Float(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    seller_ids = fields.One2many(
-        comodel_name="product.supplierinfo",
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    description_purchase = fields.Text(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    product_manager = fields.Many2one(
-        comodel_name="res.users",
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    volume = fields.Float(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    weight = fields.Float(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    warranty = fields.Float(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    weight_net = fields.Float(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
-    description_sale = fields.Text(
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
     # Policy Fields
     confirm_ok = fields.Boolean(
         string="Can Confirm",
-        compute="_compute_policy",
+        compute="_compute_policy"
     )
     valid_ok = fields.Boolean(
         string="Can Valid",
-        compute="_compute_policy",
+        compute="_compute_policy"
     )
     restart_ok = fields.Boolean(
         string="Can Restart",
-        compute="_compute_policy",
+        compute="_compute_policy"
     )
     # Log Fields
     confirm_date = fields.Datetime(
@@ -222,8 +123,16 @@ class ProductTemplate(models.Model):
         readonly=True,
     )
 
-    # fungsi saat menekan tombol confirm - valid restart dilakukan
-    # perubahan data state user dan tanggal dengan menjalankan fungsi
+    @api.multi
+    def write(self, vals):
+        for document in self:
+            _logger.info("vals: %s", vals)
+            _logger.info("product_active: %s", document.product_active)
+            if "active" in vals and "product_active" not in vals:
+                vals["active"] = document.product_active
+            super(ProductProduct, document).write(vals)
+        return True
+
     @api.multi
     def action_confirm(self):
         for document in self:
@@ -259,6 +168,7 @@ class ProductTemplate(models.Model):
             "valid_date": fields.Datetime.now(),
             "valid_user_id": self.env.user.id,
             "active": True,
+            "product_active": True,
         }
         return result
 
@@ -274,5 +184,6 @@ class ProductTemplate(models.Model):
             "valid_date": False,
             "valid_user_id": False,
             "active": False,
+            "product_active": False,
         }
         return result

@@ -31,3 +31,24 @@ class ResCompany(models.Model):
         column1="company_id",
         column2="group_id",
     )
+    product_product_confirm_grp_ids = fields.Many2many(
+        string="Allow To Confirm Product",
+        comodel_name="res.groups",
+        relation="rel_company_id_confirm_product_product",
+        column1="company_id",
+        column2="group_id",
+    )
+    product_product_valid_grp_ids = fields.Many2many(
+        string="Allow To Validate Product",
+        comodel_name="res.groups",
+        relation="rel_company_id_valid_product_product",
+        column1="company_id",
+        column2="group_id",
+    )
+    product_product_restart_grp_ids = fields.Many2many(
+        string="Allow To Restart Product",
+        comodel_name="res.groups",
+        relation="rel_company_id_restart_product_product",
+        column1="company_id",
+        column2="group_id",
+    )
