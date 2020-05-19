@@ -2,7 +2,6 @@
 # Copyright 2020 OpenSynergy Indonesia
 # Copyright 2020 PT Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
 from openerp import models, fields, api
 
 
@@ -181,27 +180,18 @@ class ProductTemplate(models.Model):
             ],
         },
     )
-    attribute_line_ids = fields.One2many(
-        comodel_name="product.attribute.line",
-        readonly=True,
-        states={
-            "draft": [
-                ("readonly", False),
-            ],
-        },
-    )
     # Policy Fields
     confirm_ok = fields.Boolean(
         string="Can Confirm",
-        compute="_compute_policy"
+        compute="_compute_policy",
     )
     valid_ok = fields.Boolean(
         string="Can Valid",
-        compute="_compute_policy"
+        compute="_compute_policy",
     )
     restart_ok = fields.Boolean(
         string="Can Restart",
-        compute="_compute_policy"
+        compute="_compute_policy",
     )
     # Log Fields
     confirm_date = fields.Datetime(
