@@ -13,11 +13,18 @@
     <field name="arch" type="xml">
         <data>
             <xpath expr="//notebook" position="inside">
-                <page name="workflow_policy_product_template" string="Workflow Policy Product Template">
-                    <group name="grp_workflow_policy_product_template" colspan="4" col="2">
+                <page name="workflow_policy_product_template" string="Product Workflow Policy">
+                    <group name="grp_workflow_policy_product_template" string="Product Template" colspan="4" col="2">
                         <field name="product_template_confirm_grp_ids" widget="many2many_tags"/>
                         <field name="product_template_valid_grp_ids" widget="many2many_tags"/>
                         <field name="product_template_restart_grp_ids" widget="many2many_tags"/>
+                    </group>
+                    <group name="grp_workflow_policy_product_template" string="Product" colspan="4" col="2">
+                        <group name="grp_workflow_policy_product_product" colspan="4" col="2">
+                            <field name="product_product_confirm_grp_ids" widget="many2many_tags"/>
+                            <field name="product_product_valid_grp_ids" widget="many2many_tags"/>
+                            <field name="product_product_restart_grp_ids" widget="many2many_tags"/>
+                        </group>
                     </group>
                 </page>
             </xpath>

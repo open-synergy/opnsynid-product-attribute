@@ -5,24 +5,10 @@
 
 <openerp>
     <data>
-        <record id="product_template_workflow_view_search" model="ir.ui.view">
-            <field name="name">product.template.workflow.policy.search</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_search_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="after">
-                    <filter string="ALL" domain="['|', ('active','=',True), ('active','=',False)]"/>
-                    <filter string="Active" domain="[('active','=',True)]"/>
-                    <filter string="In Active" domain="[('active','=',False)]"/>
-                    <separator/>
-                </xpath>
-            </field>
-        </record>
-
-        <record id="product_template_workflow_view_form" model="ir.ui.view">
-            <field name="name">product.template.workflow.policy.form</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <record id="product_product_workflow_view_form" model="ir.ui.view">
+            <field name="name">product.product.workflow.policy.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
             <field name="arch" type="xml">
             <data>
                 <xpath expr="//field[@name='name']" position="after">
@@ -58,6 +44,9 @@
                             <field name="restart_user_id" nolabel="1"/>
                         </group>
                     </page>
+                </xpath>
+                <xpath expr="//field[@name='active']" position="after">
+                    <field name="product_active" string="Product Active" invisible="1"/>
                 </xpath>
             </data>
             </field>

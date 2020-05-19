@@ -7,7 +7,6 @@ from openerp import models, fields, api
 
 
 class ProductTemplate(models.Model):
-    # jika 1 inherit tdk perlu buat _name
     _name = "product.template"
     _inherit = [
         "product.template",
@@ -17,15 +16,16 @@ class ProductTemplate(models.Model):
     @api.depends(
         "company_id",
     )
-    # membuat fungsi untuk field compute -->
     @api.multi
     def _compute_policy(self):
         _super = super(ProductTemplate, self)
         _super._compute_policy()
+
     @api.multi
     def _compute_company_id(self):
         for document in self:
             document.company_id = self.env.user.company_id
+
     @api.multi
     def _get_company_id(self):
         return self.env.user.company_id
@@ -232,8 +232,6 @@ class ProductTemplate(models.Model):
         readonly=True,
     )
 
-    # fungsi saat menekan tombol confirm - valid restart dilakukan
-    # perubahan data state user dan tanggal dengan menjalankan fungsi
     @api.multi
     def action_confirm(self):
         for document in self:
