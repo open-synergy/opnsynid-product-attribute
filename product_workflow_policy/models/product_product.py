@@ -128,7 +128,7 @@ class ProductProduct(models.Model):
         for document in self:
             _logger.info("vals: %s", vals)
             _logger.info("product_active: %s", document.product_active)
-            if "active" in vals and not "product_active" in vals:
+            if "active" in vals and "product_active" not in vals:
                 vals["active"] = document.product_active
             super(ProductProduct, document).write(vals)
         return True
@@ -137,10 +137,12 @@ class ProductProduct(models.Model):
     def action_confirm(self):
         for document in self:
             document.write(document._prepare_confirm_data())
+
     @api.multi
     def action_valid(self):
         for document in self:
             document.write(document._prepare_valid_data())
+
     @api.multi
     def action_restart(self):
         for document in self:
@@ -157,6 +159,7 @@ class ProductProduct(models.Model):
             "restart_user_id": False,
         }
         return result
+
     @api.multi
     def _prepare_valid_data(self):
         self.ensure_one()
@@ -168,6 +171,7 @@ class ProductProduct(models.Model):
             "product_active": True,
         }
         return result
+
     @api.multi
     def _prepare_restart_data(self):
         self.ensure_one()

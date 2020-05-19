@@ -236,10 +236,12 @@ class ProductTemplate(models.Model):
     def action_confirm(self):
         for document in self:
             document.write(document._prepare_confirm_data())
+
     @api.multi
     def action_valid(self):
         for document in self:
             document.write(document._prepare_valid_data())
+
     @api.multi
     def action_restart(self):
         for document in self:
@@ -256,6 +258,7 @@ class ProductTemplate(models.Model):
             "restart_user_id": False,
         }
         return result
+
     @api.multi
     def _prepare_valid_data(self):
         self.ensure_one()
@@ -266,6 +269,7 @@ class ProductTemplate(models.Model):
             "active": True,
         }
         return result
+
     @api.multi
     def _prepare_restart_data(self):
         self.ensure_one()
